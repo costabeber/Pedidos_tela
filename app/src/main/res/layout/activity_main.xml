@@ -8,15 +8,13 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentPedidos"
+        android:name="com.example.pedidos_tela.PedidosFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost = "true"
-        app:navGraph = "@navigation/main_graph"
-        app:layout_constraintBaseline_toBaselineOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        tools:layout="@layout/fragment_pedidos" />
 </androidx.constraintlayout.widget.ConstraintLayout>

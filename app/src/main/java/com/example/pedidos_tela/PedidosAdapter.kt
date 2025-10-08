@@ -2,6 +2,7 @@ package com.example.pedidos_tela
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pedidos_tela.databinding.ItemPedidoBinding
 import com.felipe.kanban.data.model.Pedido
@@ -25,9 +26,17 @@ class PedidosAdapter(
         val pedido = pedidos[position]
         with(holder.binding) {
             restaurante.text = pedido.restaurante
-            produto.text = "Produto: ${pedido.produto}"
-            quantidade.text = "Qtd: ${pedido.quantidade}"
+            textTime.text = pedido.horario
 
+            // Só configura o RecyclerView uma vez
+            if (recyclerProdutos.layoutManager == null) {
+                recyclerProdutos.layoutManager = LinearLayoutManager(root.context)
+                recyclerProdutos.setHasFixedSize(true)
+                recyclerProdutos.isNestedScrollingEnabled = false
+            }
+
+            // Atualiza o adapter sempre com os produtos do pedido atual
+            recyclerProdutos.adapter = ProdutosAdapter(pedido.produtos)
         }
     }
 

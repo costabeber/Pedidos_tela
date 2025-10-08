@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pedidos_tela.databinding.FragmentPedidosBinding
 import com.felipe.kanban.data.model.Pedido
+import com.felipe.kanban.data.model.Produto
 
 class PedidosFragment : Fragment() {
 
@@ -31,13 +32,21 @@ class PedidosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val produtos1 = listOf(
+            Produto("Açaí Grande", 1, R.drawable.produto_default),
+            Produto("Granola", 2, R.drawable.produto_default)
+        )
+        val produtos2 = listOf(
+            Produto("Hambúrguer", 1, R.drawable.produto_default)
+        )
+
         val pedidos = listOf(
-            Pedido("1", "Restaurante A", 2, "Pizza", Status.Ativo),
-            Pedido("2", "Restaurante B", 1, "Hambúrguer", Status.Ativo),
-            Pedido("3", "Restaurante C", 3, "Sushi", Status.Encerrado)
+            Pedido("1", "Restaurante A", produtos1, Status.Ativo, "12:00"),
+            Pedido("2", "Restaurante B", produtos2, Status.Ativo,"15:00")
         )
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = PedidosAdapter(pedidos)
     }
 }
+
